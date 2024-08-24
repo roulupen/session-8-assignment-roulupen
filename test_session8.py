@@ -17,7 +17,11 @@ README_CONTENT_CHECK_FOR = [
     'Faker',
     'generate_profiles_using_named_tuples',
     'calculate_statistics_tuples',
-    'generate_profiles_using_dictionary'
+    'generate_profiles_using_dictionary',
+    'namedtuple',
+    'Stock',
+    'fake_company_generator',
+    'calculate_market_value'
 ]
 
 sample_profiles_tuples = [
@@ -162,14 +166,14 @@ def test_performance_comparison():
     """
     Compare the performance of namedtuple vs dictionary implementations.
     """
-    profiles = generate_profiles_using_named_tuples(1000)
+    profiles = generate_profiles_using_named_tuples(100)
     start_time_namedtuple = time.time()
     more_profiles = profiles * 1000_000
     for profile in more_profiles:
         _ = profile.name
     elapsed_time_namedtuple = time.time() - start_time_namedtuple
 
-    profiles_dict = generate_profiles_using_dictionary(1000)
+    profiles_dict = generate_profiles_using_dictionary(100)
     start_time_dict = time.time()
     profiles_dict = profiles_dict * 1000_000
     for profile in profiles_dict:

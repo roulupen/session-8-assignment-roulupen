@@ -1,3 +1,22 @@
+"""
+This module provides functionalities for generating fake profiles and stock data using the Faker library.
+It includes functions to create large datasets of profiles and stock market data, as well as to perform 
+statistical analysis on the generated data. The data is represented using both namedtuples and dictionaries 
+for flexibility in data handling and performance efficiency.
+
+Functions:
+- generate_profiles_using_named_tuples: Generates a list of profiles using namedtuples.
+- calculate_statistics_tuples: Calculates statistics on profiles represented as namedtuples.
+- generate_profiles_using_dictionary: Generates a list of profiles using dictionaries.
+- calculate_statistics_dict: Calculates statistics on profiles represented as dictionaries.
+- fake_company_generator: Generates a list of fake stock data for an imaginary stock exchange.
+- calculate_market_value: Calculates the market value of stocks based on a specified price type.
+
+Namedtuples:
+- Profile: Stores personal information such as name, blood group, current location, and age.
+- Stock: Stores stock market data such as company name, stock symbol, opening price, highest price, closing price, and weight.
+"""
+
 from faker import Faker
 from collections import namedtuple, Counter
 import statistics
@@ -137,10 +156,10 @@ def calculate_market_value(stocks, price_type):
     """
     total_weight = 0
     weighted_sum = 0
-    
+
     for stock in stocks:
         total_weight += stock.weight
         weighted_sum += getattr(stock, price_type) * stock.weight
-    
+
     market_value = weighted_sum / total_weight
     return market_value
